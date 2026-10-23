@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>AlienMentor — Daily Learning Coach</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">A</span><span>AlienMentor</span></a>
+    <div class="top-meta"><span class="live-dot"></span><span id="mode-label">Connecting to coach…</span></div>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <div class="intro-copy">
+        <div class="eyebrow"><span class="eyebrow-mark"></span> YOUR DAILY LEARNING COACH</div>
+        <h1>Make progress, <span>one idea at a time.</span></h1>
+        <p>Choose a goal. AlienMentor follows prerequisite links and your recorded answers to pick what to study next, explain the choice, and give you practice.</p>
+      </div>
+      <div class="hero-card" aria-label="Cosmic Muay Thai training illustration and curriculum overview">
+        <div class="hero-card-top"><span class="hero-icon">✦</span><span>COSMIC FIGHT CAMP</span></div>
+        <img class="hero-art" src="../static/alien-muay-thai.png" alt="A friendly alien practices a Muay Thai kick on a glowing UFO training platform">
+        <div class="hero-stats"><div><strong id="concept-count">23</strong><span>concepts</span></div><i></i><div><strong id="topic-count">9</strong><span>learning tracks</span></div></div>
+        <div class="hero-route"><span>CHOOSE A GOAL</span><b>→</b><span>TRAIN A SKILL</span><b>→</b><span>LEVEL UP</span></div>
+      </div>
+    </section>
+
+    <section class="setup panel" aria-labelledby="setup-heading">
+      <div class="section-heading"><div><div class="eyebrow">01 <span class="eyebrow-slash">/</span> YOUR ROUTE</div><h2 id="setup-heading">Set your learning rhythm</h2></div><span class="tag"><span class="tag-spark">✳</span> Personalized to you</span></div>
+      <form id="setup-form" class="setup-grid" aria-describedby="setup-hint">
+        <label>Learning goal<select id="goal" required><option value="">Loading learning goals…</option></select></label>
+        <label>Current level<select id="level"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label>
+        <label>Daily study time <span class="unit">· minutes</span><input id="minutes" type="number" min="10" max="180" step="5" value="30" required></label>
+        <button id="setup-submit" class="button primary" type="submit">Build my plan <span aria-hidden="true">↗</span></button>
+        <p id="setup-hint" class="setup-hint">We’ll use your goal, level, and available time to choose a practical next step.</p>
+      </form>
+    </section>
+
+    <div class="main-grid">
+      <section class="plan panel" aria-labelledby="plan-heading">
+        <div class="section-heading"><div><div class="eyebrow">02 / TODAY'S PLAN</div><h2 id="plan-heading">Your next best step</h2></div><span class="day-chip">TODAY</span></div>
+        <div id="plan-content" class="plan-content" aria-live="polite"><div class="loading">Finding a good starting point…</div></div>
+      </section>
+      <section class="progress panel" aria-labelledby="progress-heading">
+        <div class="section-heading"><div><div class="eyebrow">03 / YOUR SIGNALS</div><h2 id="progress-heading">Progress, clearly labeled</h2></div></div>
+        <div id="progress-content" class="progress-content" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <section class="graph-panel panel" aria-labelledby="graph-heading">
+        <div class="section-heading graph-heading"><div><div class="eyebrow">04 <span class="eyebrow-slash">/</span> THE KNOWLEDGE GRAPH</div><h2 id="graph-heading">See how the ideas connect</h2></div><div class="legend"><span><i class="legend-dot selected"></i>Recommended</span><span><i class="legend-dot path"></i>Prerequisite</span><span><i class="legend-dot"></i>Other concept</span></div></div>
+      <div class="graph-wrap"><svg id="graph" viewBox="0 0 1000 410" role="img" aria-label="Learning concept prerequisite graph"></svg><div id="graph-mobile" class="graph-mobile" aria-label="Learning concepts"></div></div>
+      <div class="graph-note"><span class="graph-count" id="graph-count"></span><span>Arrows point from a prerequisite to the concept it unlocks. Goal links and resources are shown below.</span></div>
+      <div id="node-detail" class="node-detail" aria-live="polite"><b>Select a concept</b><span>Choose a node to see its prerequisites, recorded progress, and resource.</span></div>
+      <div id="relations" class="relation-list"></div>
+    </section>
+    <footer><span>AlienMentor · graph-guided, evidence-aware learning</span><a href="https://graphacademy.neo4j.com/" target="_blank" rel="noreferrer">Explore GraphAcademy ↗</a></footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="../static/app.js" defer></script>
+</body>
+</html>
